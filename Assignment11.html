@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Moon Orbit</title>
+<style>
+  body {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#000;
+  }
+
+  .planet {
+    width:100px;
+    height:100px;
+    background:#3a9bdc;
+    border-radius:50%;
+    position:relative;
+  }
+
+  .moon-orbit {
+    width:200px;
+    height:200px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation: spin 8s linear infinite;
+    transform-origin: center; 
+  }
+
+  .moon {
+    width:30px;
+    height:30px;
+    background:#ddd;
+    border-radius:50%;
+    box-shadow: 0 0 20px white, 0 0 20px whitesmoke, 0 0 20px whitesmoke;
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  @keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+  <div class="planet">
+    <div class="moon-orbit">
+      <div class="moon"></div>
+    </div>
+  </div>
+</body>
+</html>
