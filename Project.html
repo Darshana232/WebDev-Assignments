@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darshana Jain -Portfolio</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Courier New', monospace;
+  background: radial-gradient(circle at top, #000010 0%, #020214 70%, #000 100%);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(6deg); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  z-index: 1000;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  position: relative;
+  color: #fff;
+}
+.logo::after {
+  content: '🚀';
+  position: absolute;
+  top: -10px;
+  right: -25px;
+  animation: float 3s ease-in-out infinite;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 3px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, #7df9ff, #fff);
+  transition: width 0.3s;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+.doodle-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.doodle {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.7;
+}
+.doodle:nth-child(odd) { animation-delay: 1s; }
+.doodle:nth-child(3n) { animation-duration: 8s; }
+.doodle:nth-child(4n) { animation-duration: 10s; }
+
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.hero h1 {
+  font-size: 4.5rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #9d8cff, #7df9ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(125,249,255,0.4);
+}
+.hero p {
+  font-size: 1.5rem;
+  margin: 1.2rem 0 2.2rem;
+  opacity: 0.9;
+}
+.cta-button {
+  padding: 1rem 2.5rem;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #7df9ff;
+  transition: all 0.3s;
+}
+.cta-button:hover {
+  background: #000;
+  color: #fff;
+  box-shadow: 0 0 25px #fff;
+  transform: translateY(-4px);
+}
+
+
+.section-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(90deg, #fff, #7df9ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+.about {
+  padding: 7rem 10%;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+}
+.about-content {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+.about-content p {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.skill-tag {
+  border: 2px solid #7df9ff;
+  padding: 0.7rem 1.3rem;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+.skill-tag:hover {
+  background: #7df9ff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+
+.projects {
+  padding: 7rem 10%;
+  background: #01010f;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+.project-card {
+  border: 2px solid #7df9ff;
+  background: rgba(255,255,255,0.03);
+  padding: 2rem;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px #7df9ff;
+}
+.project-card h3 {
+  color: #7df9ff;
+  font-size: 1.6rem;
+  margin-bottom: 0.7rem;
+}
+.project-card p {
+  line-height: 1.6;
+}
+
+
+.contact {
+  padding: 6rem 10%;
+  background: rgba(255,255,255,0.02);
+  text-align: center;
+}
+.contact-content {
+  max-width: 600px;
+  margin: auto;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.social-links a {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #7df9ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.social-links a:hover {
+  background: #7df9ff;
+  color: #000;
+  transform: rotate(10deg);
+}
+
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 3rem; }
+  .section-title { font-size: 2.2rem; }
+  .skill-tag { font-size: 0.9rem; }
+}
+</style>
+</head>
+<body>
+<div class="doodle-bg">
+  <div class="doodle" style="top:10%;left:5%;">🪐</div>
+  <div class="doodle" style="top:25%;right:10%;">🚀</div>
+  <div class="doodle" style="top:45%;left:15%;">🌙</div>
+  <div class="doodle" style="top:65%;right:20%;">⭐</div>
+  <div class="doodle" style="top:80%;left:10%;">☄️</div>
+  <div class="doodle" style="bottom:10%;right:8%;">🌌</div>
+</div>
+
+<nav>
+  <div class="logo">DJ</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <h1>Darshana Jain</h1>
+  <p>Creative Developer • Problem Solver • Explorer of Ideas</p>
+  <a href="#projects" class="cta-button">View My Work</a>
+</section>
+
+<section class="about" id="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="about-content">
+    <p>Hi, I’m Darshana Jain — a curious mind passionate about technology, creativity, and exploration. I love turning abstract ideas into interactive experiences that connect imagination with reality.</p>
+    <p>When I’m not coding, I’m stargazing, sketching, or finding music that feels like space travel 🎧✨</p>
+    <div class="skills">
+      <span class="skill-tag">HTML</span>
+      <span class="skill-tag">CSS</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Problem Solving</span>
+      <span class="skill-tag">Creative Thinking</span>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>🌙 Moon Orbit</h3>
+      <p>An interactive simulation visualizing celestial motion using HTML and CSS animations.</p>
+      <a href="http://127.0.0.1:5500/.darshana/Assignment11.html">Moon Orbit</a>
+    </div>
+    <div class="project-card">
+      <h3>🚀 Cosmic Ferris</h3>
+      <p>A whimsical ferris wheel animated with CSS that moves like planets orbiting around stars.</p>
+      <a href="http://127.0.0.1:5500/.darshana/Assignment12.html">Ferris Wheel</a>
+    </div>
+    <div class="project-card">
+      <h3>💫 Portfolio</h3>
+      <p>This portfolio itself — a cosmic blend of creativity and minimalism.</p>
+      <a href="http://127.0.0.1:5500/.darshana/Project.html">Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2 class="section-title">Connect with Me</h2>
+  <div class="contact-content">
+    <p>I’m always open to collaboration or chatting about tech, design, or the cosmos 🌌</p>
+    <div class="social-links">
+      <a href="https://github.com/Darshana232">🚀</a>
+      <a href="mailto:muhnot.darshana232@gmail.com">✉️</a>
+      <a href="https://www.linkedin.com/in/darshana-jain-b62230361/">🌐</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Darshana Jain • Made with 💫 and curiosity</p>
+</footer>
+</body>
+</html>
